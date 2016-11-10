@@ -1,0 +1,8 @@
+%%sql
+SELECT *
+FROM exam_answers
+WHERE TIMESTAMPDIFF(minute,start_time,end_time) >
+(SELECT AVG(TIMESTAMPDIFF(minute,start_time,end_time)) AS AvgDuration
+FROM exam_answers
+WHERE TIMESTAMPDIFF(minute,start_time,end_time)>0 AND
+test_name="Yawn Warm-Up");
